@@ -1,0 +1,61 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>英単語カウンター</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- My style -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Nerko+One&display=swap" rel="stylesheet">
+  </head>
+  <body>
+      <div class="container">
+        <div class="input_container">
+        <a href="{% url 'word_counter:index' %}" class="title">
+          <h1>Let's Count</h1>
+        </a>
+        <!-- アプリケーション説明 -->
+        <p>英文の中に使われている各単語の使用回数をカウントします。<br>
+        英単語の意味（簡易訳）も表示されるので便利です。</p>
+        <form id="text_form"  action="{% url 'word_counter:counter' %}" method="POST" >
+          {% csrf_token %}
+          <!-- カウントするテキストを入力 -->
+          <textarea  id="count_text" name="count_text"  rows="8"   maxlength="5000" required placeholder="カウントするテキストを入力（5000文字以内）" ></textarea>
+          <!-- 入力ボタン -->
+          <div id="count_btn">
+              <button type="submit" class="btn-flat-border">カウント</button>
+          </div>
+        </form>
+      </div>
+        <!-- 結果を表示 -->
+      <div class="result_container">
+        {% if data %}
+        <div id="result_number">
+          <div id="sum_word" class="result_number">
+          総単語数：{{ sum_word }}
+          </div>
+          <div id="words_num" class="result_number">
+          単語数(重複なし)：{{ data|length }}
+          </div>
+        </div>
+        <div id ="result_table" class="" >
+          <ul>
+            <table border="1">
+              <tr>
+                <th>No.</th><th>単語</th><th>出現回数</th><th>意味</th>
+              </tr>
+              {% for count, word, translate in data %}
+              <tr>
+                <td>{{ forloop.counter }}</td><td>{{ word }}</td><td>{{ count }}</td><td>{{ translate }}</td>
+              </tr>
+              {% endfor %}
+            </table>
+        </div>
+      </div>
+        {% endif %}
+      </div>
+  </body>
+</html>

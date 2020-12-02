@@ -1,0 +1,104 @@
+@charset "UTF-8";
+
+/* 基本色 */
+:root {
+	--main-color: #FFFFFF;
+	--accent-color: #A1B7F6;
+	--dark-main-color: #E9FFE6;
+  --text-title-color: #000000;
+}
+
+/* 基本設定： ページ全体 */
+body {
+	margin: 10px 100px;
+  padding: 0;
+	font-family: 'メイリオ',
+		'Hiragino Kaku Gothic Pro',
+		sans-serif;
+}
+
+.container{
+
+  text-align: center;
+  /* align-items: center;
+  justify-content: center; */
+}
+
+/* サイト名（h1） */
+.container h1{
+  margin-top: 5px;
+  margin-bottom: 10px;
+  font-family: 'Nerko One', cursive;
+  font-size: 10vw;
+  letter-spacing: 0.1em;
+  margin-left: 0.1em;
+  text-decoration: none;
+}
+
+.title a, a:link, a:visited, a:hover, a:active {
+  text-decoration: none;
+  color: #000;
+  color: var(--text-title-color);
+}
+
+/* サイト説明 */
+.container p {
+    margin-top: 0;
+    margin-bottom:  0;
+    font-size: 15px;
+}
+
+
+/* テキストエリア */
+form{
+  margin-top: 1em;
+}
+
+textarea{
+  width: 100%;
+}
+
+/* カウントボタン */
+.btn-flat-border {
+  display: inline-block;
+  width: 100%;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: #4A58F4;
+  border: solid 2px #4A58F4;
+  background: #FFF;
+  border-radius: 3px;
+  transition: .4s;
+}
+
+.btn-flat-border:hover {
+  background: #4A58F4;
+  color: white;
+}
+
+/* 結果　単語数 */
+#result_number{
+  display: flex;
+  margin-top: 1.0em;
+}
+
+.result_number{
+  margin-right: 1.5em;
+}
+
+/* 結果テーブル */
+table {
+    margin: 3px auto;    /* 上下3px 左右auto */
+    border-collapse: collapse;
+}
+table, th, td {
+    border: none;
+}
+
+th {
+  border-bottom: solid 2px black;
+}
+
+td {
+  border-bottom: solid 1px black;
+}
